@@ -1,4 +1,4 @@
-package tuan3.buoi1;
+package tuan3.buoi5;
 
 public class Dog {
     private int size;

@@ -1,9 +1,9 @@
 package guessgame;
 
 public class GuessGame {
-    Player p1;
-    Player p2;
-    Player p3;
+    private Player p1;
+    private Player p2;
+    private Player p3;
 
     public void starGame(){
         p1 = new Player();
