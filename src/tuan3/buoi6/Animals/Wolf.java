@@ -1,13 +1,12 @@
 package tuan3.buoi6.Animals;
 
-public class Tiger extends Feline{
+public class Wolf extends Canine{
     @Override
     protected void makeNoise() {
-        System.out.println("Tiger sound: gào gào");
+        System.out.println("Wolf sound...");
     }
-
     @Override
     protected void eat() {
-        System.out.println("Eating ...");
+        System.out.println("eat meat...");
     }
 }
