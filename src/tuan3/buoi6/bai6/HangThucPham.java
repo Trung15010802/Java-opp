@@ -6,33 +6,38 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HangThucPham {
-    private int maHang;
+    private String maHang;
     private String tenHang;
     private double donGia;
-    private String  inputDate2;
     private Date ngaySanXuat;
     private Date ngayHetHan;
     SimpleDateFormat spDate = new SimpleDateFormat("dd/MM/yyyy");
 
-    public HangThucPham(int mahang) {
-        this.maHang = mahang;
+    public HangThucPham(String maHang) {
+        setMahang(maHang);
     }
 
-    public HangThucPham(int mahang, String tenHang, double donGia, String inputDate1, String inputDate2)
+    public HangThucPham() {
+    }
+
+    public HangThucPham(String maHang, String tenHang, double donGia, String inputDate1, String inputDate2)
             throws ParseException {
-        this.maHang = mahang;
-        this.tenHang = tenHang;
-        this.donGia = donGia;
+        this.setMahang(maHang);
+        this.setTenHang(tenHang);
+        this.setDonGia(donGia);
         ngayHetHan = spDate.parse(inputDate2);
         ngaySanXuat = spDate.parse(inputDate1);
     }
 
-    public int getMahang() {
+    public String getMahang() {
         return maHang;
     }
 
-    public void setMahang(int mahang) {
-        this.maHang = mahang;
+    private void setMahang(String maHang) {
+        if (maHang != null) {
+            this.maHang = maHang;
+        } else
+            System.out.println("Mã hàng không được rỗng!");
     }
 
     public String getTenHang() {
@@ -40,7 +45,10 @@ public class HangThucPham {
     }
 
     public void setTenHang(String tenHang) {
-        this.tenHang = tenHang;
+        if (tenHang != null) {
+            this.tenHang = tenHang;
+        } else
+            System.out.println("Tên hàng không được để rỗng!");
     }
 
     public double getDonGia() {
@@ -48,7 +56,10 @@ public class HangThucPham {
     }
 
     public void setDonGia(double donGia) {
-        this.donGia = donGia;
+        if (donGia > 0) {
+            this.donGia = donGia;
+        } else
+            System.out.println("Đơn giá phải lớn hơn 0");
     }
 
     public Date getNgaySanXuat() {
@@ -56,7 +67,10 @@ public class HangThucPham {
     }
 
     public void setNgaySanXuat(Date ngaySanXuat) {
-        this.ngaySanXuat = ngaySanXuat;
+        if (ngaySanXuat != null) {
+            this.ngaySanXuat = ngaySanXuat;
+        } else
+            System.out.println("Ngày sản xuất không được để rỗng!");
     }
 
     public Date getNgayHetHan() {
@@ -64,30 +78,28 @@ public class HangThucPham {
     }
 
     public void setNgayHetHan(Date ngayHetHan) {
-        this.ngayHetHan = ngayHetHan;
+        if (ngayHetHan.after(ngaySanXuat)) {
+            this.ngayHetHan = ngayHetHan;
+        } else
+            System.out.println("Ngày hết hạn phải sau ngày sản xuất!");
     }
 
     public String toString() {
         NumberFormat currencyFormat = NumberFormat.getNumberInstance();
         String str = currencyFormat.format(donGia);
-        String str1 = spDate.format(ngaySanXuat);
-        String str2 = spDate.format(ngayHetHan);
         return "Thông tin về thực phẩm: \n" +
                 "Mã hàng : " + maHang +
-                "\nTên hàng : '" + tenHang +
+                "\nTên hàng : " + tenHang +
                 "\nĐơn giá : " + str +
-                "\nNgày sản xuất : " + str1 +
-                "\nHạn sử dụng : " + str2;
+                "\nNgày sản xuất : " + spDate.format(ngaySanXuat) +
+                "\nHạn sử dụng : " + spDate.format(ngayHetHan);
     }
 
-    void hsd() {
+    boolean hsd() {
         Date today = new Date();
-        String strToDay = spDate.format(today);
-         inputDate2 = spDate.format(ngayHetHan);
-        if (inputDate2.compareTo(strToDay) > 0)
-            System.out.println("Còn hạn sử dụng!");
-        else
-            System.out.println("Hết hạn sử dụng!");
+        if (ngayHetHan.before(today))
+            return true;
+        return false;
     }
 
 }
