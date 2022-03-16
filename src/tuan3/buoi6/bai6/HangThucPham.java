@@ -1,11 +1,12 @@
 package tuan3.buoi6.bai6;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HangThucPham {
+public class HangThucPham implements Serializable{
     private String maHang;
     private String tenHang;
     private double donGia;
