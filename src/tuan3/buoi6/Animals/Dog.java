@@ -7,7 +7,7 @@ public class Dog extends Canine{
     }
 
     @Override
-    protected void makeNoise() {
+    public void makeNoise() {
         System.out.println("Chó sủa: gâu gâu");
     }
 

@@ -7,7 +7,7 @@ public class Cat extends Feline implements Pet{
     }
 
     @Override
-    protected void makeNoise() {
+    public void makeNoise() {
         System.out.println("Mèo kêu: meo meo meo");
     }
 
@@ -17,13 +17,13 @@ public class Cat extends Feline implements Pet{
 
     @Override
     public void beFriendly() {
-        
+        System.out.println("Cat friendly");
         
     }
 
     @Override
     public void play() {
-       
+       System.out.println("Cat play");
         
     }
 }

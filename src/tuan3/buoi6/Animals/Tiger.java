@@ -2,7 +2,7 @@ package tuan3.buoi6.Animals;
 
 public class Tiger extends Feline{
     @Override
-    protected void makeNoise() {
+    public void makeNoise() {
         System.out.println("Tiger sound: gào gào");
     }
 

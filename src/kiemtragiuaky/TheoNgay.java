@@ -30,6 +30,16 @@ public class TheoNgay extends HoaDon {
     @Override
     public String toString() {
         return super.toString()
-        +"\n Số ngày thuê: "+soNgay;
+                + "\n Số ngày thuê: " + soNgay;
+    }
+
+    @Override
+    public double tinhTien(HoaDon theoNgay) {
+        double thanhTienTheoNgay = 0;
+        if (soNgay > 7)
+            thanhTienTheoNgay = soNgay * theoNgay.getDonGia() * 0.8;
+        else
+            thanhTienTheoNgay = soNgay * theoNgay.getDonGia();
+        return thanhTienTheoNgay;
     }
 }

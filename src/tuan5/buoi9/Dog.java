@@ -7,21 +7,21 @@ public class Dog extends Canine implements Pet{
     }
 
     @Override
-    protected void makeNoise() {
+    public void makeNoise() {
         System.out.println("Chó sủa: gâu gâu");
     }
 
-    void chaseCat(){
+    public void chaseCat(){
         System.out.println("Đuổi mèo");
     }
 
     @Override
     public void beFriendly() {
-        
+        System.out.println("Dog Friendly");
     }
 
     @Override
     public void play() {
-        
+        System.out.println("Dog play");
     }
 }

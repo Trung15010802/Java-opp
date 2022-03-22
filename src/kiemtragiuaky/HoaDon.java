@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-public class HoaDon {
+public abstract class HoaDon {
     private String maHoaDon;
     private Date ngay;
     private String tenKhachHang;
@@ -66,6 +66,8 @@ public class HoaDon {
         this.donGia = donGia;
     }
 
+    public abstract double tinhTien(HoaDon hoaDon);
+
     void nhap() throws ParseException{
         System.out.print("Nhập mã hóa đơn: ");
         maHoaDon = sc.nextLine();
@@ -86,5 +88,9 @@ public class HoaDon {
         +"\n Tên khách hàng: "+tenKhachHang
         +"\n Mã phòng: "+maPhong+
         "\n Đơn giá: "+donGia;
+    }
+
+    public double getSoNgay() {
+        return 0;
     }
 }
